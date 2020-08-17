@@ -39,4 +39,9 @@ RUN mkdir -p $STATEFUN_MODULES && \
     chmod -R g+rw $STATEFUN_HOME && \
     chmod +x /docker-entry-point.sh
 
+RUN wget --quiet https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_11_1_4.tar.gz -P /tmp/ && \
+    tar -xzf /tmp/jprofiler_linux_11_1_4.tar.gz -C /opt && \
+    rm /tmp/jprofiler_linux_11_1_4.tar.gz && \
+    mv /opt/jprofiler11.1.4 /opt/jprofiler
+
 ENTRYPOINT ["/docker-entry-point.sh"]
